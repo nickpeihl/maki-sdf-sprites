@@ -11,11 +11,13 @@
   "dependencies": {
     "@turf/meta": "^6.0.2",
     "@turf/random": "^6.0.2",
-    "fontnik": "github:nickpeihl/fontnik#hv-commands",
-    "pngjs": "^3.4.0",
-    "svgpath": "^2.2.2"
+    "@elastic/maki": "github:nickpeihl/maki#sdf-icons"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "url-loader": "^2.1.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
