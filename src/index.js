@@ -1,5 +1,5 @@
 import { spritesheet } from '@elastic/maki';
-import sprites from '@elastic/maki/dist/sprite@1.png';
+import sprites from '@elastic/maki/dist/sprite@2.png';
 import { RGBAImage } from './utils/image';
 import { randomPoint } from '@turf/random';
 import { propEach } from '@turf/meta';
@@ -9,11 +9,11 @@ var map = new mapboxgl.Map({
   style: 'https://tiles.maps.elastic.co/styles/dark-matter/style.json',
 });
 
-const spriteData = spritesheet['1'];
+const spriteData = spritesheet['2'];
 const icons = Object.keys(spriteData).filter(sprite => {
   return sprite.endsWith('-15');
 });
-const points = randomPoint(2000);
+const points = randomPoint(1000);
 propEach(points, (cur, i) => {
   cur.icon = icons[Math.floor(Math.random() * (icons.length-1))];
   cur.color =
@@ -21,8 +21,12 @@ propEach(points, (cur, i) => {
     Math.random()
       .toString(16)
       .substr(-6);
+  cur.halo_color = '#' +
+  Math.random()
+    .toString(16)
+    .substr(-6);
   cur.orientation = Math.random() * (360 - 0) + 0;
-  cur.size = Math.random() * (2.5 - 0.5) + 0.5;
+  cur.size = Math.random() * (3 - 1) + 1;
 });
 
 map.on('load', function() {
@@ -50,10 +54,12 @@ map.on('load', function() {
       'icon-image': ['get', 'icon'],
       'icon-size': ['get', 'size'],
       'icon-rotate': ['get', 'orientation'],
-      'icon-allow-overlap': true
+      'icon-allow-overlap': false
     },
     paint: {
       'icon-color': ['get', 'color'],
+      'icon-halo-width': ['get', 'size'],
+      'icon-halo-color': ['get', 'halo_color']
     },
   });
 });
