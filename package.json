@@ -20,7 +20,7 @@
     "babel-loader": "^8.0.6",
     "file-loader": "^4.1.0",
     "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2"
   }
 }
